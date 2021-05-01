@@ -1,0 +1,37 @@
+<div class="main">
+  <mat-card [formGroup]="group" class="card">
+    <h1>Inscription</h1>
+    <mat-form-field class="input-width" appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input formControlName="lastname" matInput>
+      <mat-error>Nom obligatoire</mat-error>
+    </mat-form-field>
+    <mat-form-field class="input-width" appearance="fill">
+      <mat-label>Prénom</mat-label>
+      <input formControlName="firstname" matInput>
+    </mat-form-field>
+    <mat-form-field class="input-width" appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let type of types" [value]="type.value">
+          {{type.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="input-width" appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input formControlName="email" matInput>
+      <mat-error *ngIf="group.get('email').hasError('pattern')"> Email incorrect</mat-error>
+    </mat-form-field>
+    <mat-form-field class="input-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" type="password" matInput>
+      <mat-error *ngIf="group.get('password').hasError('required')">Password obligatoire</mat-error>
+      <mat-error *ngIf="group.get('password').hasError('minlength')">Min 6 chars</mat-error>
+    </mat-form-field>
+
+    <button (click)="send()" class="input-width" mat-raised-button color="primary">
+      Envoyer
+    </button>
+  </mat-card>
+</div>

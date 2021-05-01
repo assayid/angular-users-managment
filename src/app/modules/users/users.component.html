@@ -1,0 +1,42 @@
+<h1>Nom : {{context.user.lastname}}</h1>
+<button (click)="logout()" mat-raised-button>logout</button>
+<div class="main">
+  <div class="table">
+    <mat-card class="head">
+      <div class="item">
+        <span>Name</span>
+      </div>
+      <div class="item">
+        <span>Email</span>
+      </div>
+      <div class="item">
+        <span>Address</span>
+      </div>
+      <div class="item">
+        <span>Site web</span>
+      </div>
+      <div class="item">
+        <span>Actions</span>
+      </div>
+    </mat-card>
+    <mat-card *ngFor="let user of users" class="line">
+      <div class="item">
+        <span>{{user.firstname}}</span>
+      </div>
+      <div class="item">
+        <span>{{user.lastname}}</span>
+      </div>
+      <div class="item">
+        <span>{{user.email}}</span>
+      </div>
+      <div class="item">
+        <span>{{user.category }}</span>
+      </div>
+      <div (click)="goedit(user)" style="cursor: pointer" class="item">
+        <mat-icon>edit</mat-icon>
+      </div>
+
+    </mat-card>
+
+  </div>
+</div>
